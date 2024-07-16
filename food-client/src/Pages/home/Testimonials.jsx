@@ -1,7 +1,5 @@
-/* eslint-disable react/no-unescaped-entities */
-import React from "react";
-import { FaStar } from "react-icons/fa";
-
+import React from 'react'
+import { FaStar } from 'react-icons/fa'
 const Testimonials = () => {
   return (
     <div className="section-container">
@@ -49,7 +47,7 @@ const Testimonials = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Testimonials;
+export default Testimonials
