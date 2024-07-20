@@ -3,6 +3,7 @@ import {
 import Main from "../layout/Main";
 import Home from "../Pages/home/Home";
 import Menu from "../Pages/shop/Menu";
+import Signup from "../components/Signup";
     const router = createBrowserRouter([
     {
       path: "/",
@@ -17,6 +18,10 @@ import Menu from "../Pages/shop/Menu";
       element: <Menu />,
     },
   ]
+    },
+    {
+      path:"/signup",
+      element: <Signup />,
     }
   ]);
   export default router;

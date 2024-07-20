@@ -1,9 +1,10 @@
-import React from 'react'
-import { FaFacebookF, FaGithub, FaGoogle } from 'react-icons/fa'
-import { useForm} from "react-hook-form"
-import { Link } from 'react-router-dom'
 
-const Model = () => {
+import React, { useContext } from "react";
+import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form"
+import Modal from "./Model";
+const Signup = () => {
     const {
         register,
         handleSubmit,
@@ -11,11 +12,10 @@ const Model = () => {
       } = useForm();
       const onSubmit = (data) => console.log(data)
   return (
-    <dialog id="my_modal_5" className="modal modal-middle sm:modal-middle">
-      <div className="modal-box bg-white">
+    <div className="max-w-md bg-white shadow w-full mx-auto flex items-center justify-center my-20">
         <div className="modal-action flex flex-col justify-center mt-0">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body" method="dialog">
-            <h3 className="font-bold text-lg text-black">Please Login!</h3>
+            <h3 className="font-bold text-lg text-black">Create A Account!</h3>
 
             {/* email */}
             <div className="form-control">
@@ -25,8 +25,7 @@ const Model = () => {
               <input
                 type="email"
                 placeholder="email"
-                required
-                className="input input-bordered bg-white"
+                className="input input-bordered"
                 {...register("email")}
               />
             </div>
@@ -34,60 +33,63 @@ const Model = () => {
             {/* password */}
             <div className="form-control">
               <label className="label">
-                <span className="label-text text-black">Password</span>
+                <span className="label-text">Password</span>
               </label>
               <input
                 type="password"
                 placeholder="password"
-                className="input input-bordered bg-white"
+                className="input input-bordered"
                 {...register("password")}
               />
               <label className="label mt-1">
-                <a href="#" className="label-text-alt link link-hover text-red">
+                <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
                 </a>
               </label>
             </div>
 
+            {/* error */}
+
             {/* login btn */}
-            <div className="form-control mt-4">
+            <div className="form-control mt-6">
               <input
                 type="submit"
-                value="Login"
+                value="Signup"
                 className="btn bg-green text-white"
               />
             </div>
 
             <p className="text-center my-2">
-              Donot have an account?{" "}
-              <Link to="/signup" className="underline text-red ml-1">
-                Signup Now
-              </Link>{" "}
+              Have an account?{" "}
+              <button className="underline text-red ml-1"
+               onClick={() => document.getElementById("my_modal_5").showModal()}
+              >
+                Login
+              </button>{" "}
             </p>
 
-            <button 
-            htmlFor="my_modal_5"
-            onClick={() => document.getElementById("my_modal_5").close()}
+            <Link
+            to="/"
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-            >✕</button>
+            >✕</Link>
           </form>
 
           {/* social sign in */}
           <div className="text-center space-x-3 mb-5">
-            <button className="btn btn-circle hover:bg-green hover:text-white bg-gray-200 border-gray-300" >
+            <button className="btn btn-circle hover:bg-green hover:text-white">
               <FaGoogle />
             </button>
-            <button className="btn btn-circle hover:bg-green hover:text-white bg-gray-200 border-gray-300">
+            <button className="btn btn-circle hover:bg-green hover:text-white">
               <FaFacebookF />
             </button>
-            <button className="btn btn-circle hover:bg-green hover:text-white bg-gray-200 border-gray-300">
+            <button className="btn btn-circle hover:bg-green hover:text-white">
             <FaGithub />
             </button>
           </div>
         </div>
-      </div>
-    </dialog>
+        <Modal/>
+    </div>
   )
 }
 
-export default Model
+export default Signup
